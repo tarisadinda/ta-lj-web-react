@@ -1,0 +1,15 @@
+@import '../../utils/variables';
+
+.countCard {
+    width: 250px;
+}
+
+.textWrap {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.count {
+    font-size: $font-36;
+}
