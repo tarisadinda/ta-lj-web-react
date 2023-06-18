@@ -55,7 +55,7 @@ export default function Navbar() {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }} className={styles.menuWrap}>
           <List>
-            <Link href='/dashboard' className={styles.link}>
+            <Link to='/dashboard' className={styles.link}>
                 <ListItemButton>
                     <ListItemText primary="Dashboard" />
                 </ListItemButton>
@@ -66,12 +66,14 @@ export default function Navbar() {
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }}>
                     <ListItemText primary="Pengajuan Baru" />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText primary="Semua Perusahaan" />
-                </ListItemButton>
+                  </ListItemButton>
+                  <Link to='/company/all' className={styles.link}>
+                    <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemText primary="Semua Perusahaan" />
+                    </ListItemButton>
+                  </Link>
                 </List>
             </Collapse>
           </List>
