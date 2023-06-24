@@ -51,8 +51,8 @@ export default function CustomTable({columns, data, actionButton}) {
                                 <CustomTableCell key={index}>{col.render(item)}</CustomTableCell>
                             ))}
                             <CustomTableCell>
-                                <div>
-                                    {actionButton.map((btn, index) => (
+                                <div className={styles.actions}>
+                                    {actionButton !== undefined && actionButton.map((btn, index) => (
                                         <IconButton key={index} onClick={() => btn.function(item.id)}>
                                             {btn.icon}
                                         </IconButton>
