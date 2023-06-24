@@ -6,6 +6,7 @@ import CustomTable from '../../components/table'
 import CustomDropdown from '../../components/custom-dropdown'
 import EditIcon from '@mui/icons-material/Edit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import { useNavigate } from 'react-router-dom'
 
 const dummyData = [
     {
@@ -61,22 +62,6 @@ const colNames = [
     },
 ]
 
-const detailBtn = (id) => {
-    console.log('Detail: ' + id)
-}
-
-const actionBtn = [
-    {
-        icon: <EditIcon />,
-        id: 'edit'
-    },
-    {
-        icon: <VisibilityIcon />,
-        id: 'detail',
-        function: (id) => detailBtn(id)
-    },
-]
-
 const statusData = [
     {
         label: 'Semua',
@@ -93,11 +78,30 @@ const statusData = [
 ]
 
 export default function AllCompany() {
+    const navigate = useNavigate()
+
     const [status, setStatus] = React.useState('all')
 
     const handleStatus = (e) => {
         setStatus(e.target.value)
     }
+
+    const detailBtn = (id) => {
+        console.log(id)
+        navigate('/company/detail-company')
+    }
+    
+    const actionBtn = [
+        {
+            icon: <EditIcon />,
+            id: 'edit'
+        },
+        {
+            icon: <VisibilityIcon />,
+            id: 'detail',
+            function: (id) => detailBtn(id)
+        },
+    ]
 
     return(<>
         <div>
