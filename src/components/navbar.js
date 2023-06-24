@@ -32,6 +32,11 @@ const bottomMenu = [
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(true)
+  const [openEmployeeList, setOpenEmployeeList] = React.useState(false)
+
+  const handleEmployeList = () => {
+    setOpenEmployeeList(!openEmployeeList)
+  }
 
   const handleClick = () => {
     setOpen(!open)
@@ -66,12 +71,32 @@ export default function Navbar() {
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText primary="Pengajuan Baru" />
-                  </ListItemButton>
+                  <Link to='/company/new-submission' className={styles.link}>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary="Pengajuan Baru" />
+                    </ListItemButton>
+                  </Link>
                   <Link to='/company/all' className={styles.link}>
                     <ListItemButton sx={{ pl: 4 }}>
                         <ListItemText primary="Semua Perusahaan" />
+                    </ListItemButton>
+                  </Link>
+                </List>
+            </Collapse>
+            <ListItemButton onClick={handleEmployeList}>
+                <ListItemText primary="Pekerja" />
+                {openEmployeeList ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+            <Collapse in={openEmployeeList} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link href='/employee/new-account-list' className={styles.link}>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary="Pengguna Baru" />
+                    </ListItemButton>
+                  </Link>
+                  <Link href='/company/all' className={styles.link}>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary="Semua Pekerja" />
                     </ListItemButton>
                   </Link>
                 </List>
