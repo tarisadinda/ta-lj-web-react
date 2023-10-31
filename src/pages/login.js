@@ -1,11 +1,11 @@
-import styles from "../styles/pages/Login.module.scss"
+import styles from "@/styles/pages/Login.module.scss"
 import cn from 'classnames'
 import { Link, NavLink } from "react-router-dom"
 
 export default function Login() {
     return(<>
         <div className={styles.wrapper}>
-            <h2 className="d-flex justify-content-center mb-5">Login Admin</h2>
+            <h2 className="d-flex justify-content-center mb-5">Login</h2>
             <div className={styles.form}>
                 <div className="mb-3">
                     <label htmlFor="uname" className="form-label"><b>Username</b></label>
