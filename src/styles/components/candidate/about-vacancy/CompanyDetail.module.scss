@@ -1,0 +1,13 @@
+@import '/src/styles/helpers/variables';
+
+.frame {
+    border: 1px solid $blue-1;
+    padding: 45px;
+    border-radius: 10px;
+    display: grid;
+    row-gap: 15px;
+
+    p {
+        margin-bottom: 0px;
+    }
+}
