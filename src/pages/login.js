@@ -5,7 +5,7 @@ import React from "react"
 import InputIcon from "@/components/common/input-icon"
 import SVGEye from '@/assets/icons/eye.svg'
 import SVGEyeClose from '@/assets/icons/eye-closed.svg'
-import CustomAlert from "@/components/common/custom-alert"
+import CustomAlert from "@/components/common/alert"
 
 export default function Login() {
     const router = useNavigate()

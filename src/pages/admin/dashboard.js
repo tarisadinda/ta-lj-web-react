@@ -1,5 +1,5 @@
+import React from "react"
 import SummaryCard from "@/components/admin/dashboard/summary-card"
-import LayoutMain from "@/components/admin/layouts/main"
 import styles from '@/styles/pages/admin/Dashboard.module.scss'
 
 export default function Dashboard() {
@@ -34,12 +34,4 @@ export default function Dashboard() {
             </div>
         </div>
     </>)
-}
-
-Dashboard.getLayout = function getLayout(page) {
-    return (
-        <LayoutMain>
-            {page}
-        </LayoutMain>
-    )
 }

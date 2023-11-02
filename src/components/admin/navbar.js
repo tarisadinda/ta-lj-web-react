@@ -42,7 +42,7 @@ export default function Navbar() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar>
+        <Toolbar className='justify-content-end'>
           <NavLink to='/' className={styles.NavLink}>
             <div className={styles.profileBtn}>
               <AccountCircleIcon sx={{ fontSize: 40 }} />
