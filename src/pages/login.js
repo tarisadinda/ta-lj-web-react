@@ -32,7 +32,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        navigate('/admin/dashboard')
+        navigate('/dashboard')
     }
 
     return(<>
@@ -69,7 +69,7 @@ export default function Login() {
                     </div>
                     <button type="submit" className={cn(styles.loginBtn, "btn btn-primary blue")}>Login</button>
                     <div className="mt-2">
-                        <p className={styles.registText}>Belum punya akun? <NavLink to="/admin/register"><span>Daftar</span></NavLink></p>
+                        <p className={styles.registText}>Belum punya akun? <NavLink to="/register"><span>Daftar</span></NavLink></p>
                     </div>
                 </div>
             </form>
