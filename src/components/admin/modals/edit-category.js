@@ -6,10 +6,6 @@ import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material"
 
 export default function EditCategoryModal({ open, onClose, id }) {
     const [catName, setCatName] = useState('')
-    
-    const getDetailCategory = () => {
-        // axiosInstance.
-    }
 
     return(<>
         <Dialog open={open} fullWidth={true} maxWidth='xs'>

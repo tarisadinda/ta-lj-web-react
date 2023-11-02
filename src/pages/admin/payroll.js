@@ -2,14 +2,12 @@ import React, { useRef, useState } from 'react'
 import styles from '@/styles/pages/admin/Payroll.module.scss'
 import IconBtn from "@/components/common/icon-button"
 import LayoutMain from "@/components/admin/layouts/main"
-import SVGAdd from '@/public/icons/add.svg'
+import SVGAdd from '@/assets/icons/add.svg'
 import CustomTable from '@/components/common/table'
 import AddSalaryModal from '@/components/admin/modals/add-salary'
-import { axiosInstance } from 'src/utils/axios'
-import { API_SALARY, API_SALARY_END, API_SALARY_START } from 'src/utils/api'
-import { convertDate } from 'src/utils/convert-date'
+import { API_SALARY } from '../../utils/api'
 import { useDispatch, useSelector } from 'react-redux'
-import { alertMessage, openAlert, setOpenAlert } from 'src/redux/common/alertSlice'
+import { alertMessage, openAlert, setOpenAlert } from '../../redux/common/alertSlice'
 import CustomAlert from '@/components/common/alert'
 
 const colList = [
@@ -26,7 +24,7 @@ const colList = [
     {
         id: 'createdAt',
         label: 'Tanggal Dibuat',
-        render: (data) => <span>{convertDate(data.createdAt)}</span>
+        render: (data) => <span>{data.createdAt}</span>
     },
 ]
 
@@ -40,23 +38,6 @@ export default function Payroll() {
 
     const [isAddSalary, setIsAddSalary] = useState(false)
     const [salaryList, setSalaryList] = useState([])
-
-    const getSalary = () => {
-        axiosInstance.get(API_SALARY)
-        .then((res) => {
-            setSalaryList(res.data.data)
-        }).catch((err) => console.log(err))
-    }
-
-    React.useEffect(() => {
-        if (effectRan.current === false) {
-            getSalary()
-
-            return () => {
-                effectRan.current === true
-            }
-        }
-    }, [])
 
     const deleteSalary = (id) => {
         console.log(id)

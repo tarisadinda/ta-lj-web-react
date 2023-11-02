@@ -5,7 +5,6 @@ import CustomTable from '@/components/common/table'
 import LayoutMain from '@/components/admin/layouts/main'
 import IconBtn from '@/components/common/icon-button'
 import AddCategoryModal from '@/components/admin/modals/add-category'
-import { convertDate } from '../../utils/convert-date'
 import ConfirmDeleteModal from '@/components/common/confirm-delete'
 import EditCategoryModal from '@/components/admin/modals/edit-category'
 
@@ -18,7 +17,7 @@ const colList = [
     {
         id: 'create_date',
         label: 'Tanggal Dibuat',
-        render: (data) => <span>{convertDate(data.create_date)}</span>
+        render: (data) => <span>{data.create_date}</span>
     },
 ]
 
@@ -28,7 +27,17 @@ export default function JobCategories() {
     const [askDelete, setAskDelete] = React.useState(false)
     const [deleteId, setDeleteId] = React.useState('')
     const [editCatId, setEditCatId] = React.useState('')
-    const [categoryList, setCategoryList] = React.useState([])
+    
+    const categoryList = [
+        {
+            category_name: 'Teknologi',
+            create_date: '10/5/2022'
+        },
+        {
+            category_name: 'Business Development',
+            create_date: '10/5/2022'
+        },
+    ]
 
     const deleteItem = () => {
         setAskDelete(false)
@@ -39,7 +48,7 @@ export default function JobCategories() {
     }
 
     const editItem = () => {
-        setOpenEditModal(false)
+        setOpenEditModal(true)
     }
     
     return(<>
@@ -63,10 +72,11 @@ export default function JobCategories() {
         />
         <AddCategoryModal open={openCatModal} onClose={() => setOpenCatModal(false)} />
         <ConfirmDeleteModal open={askDelete} 
+            desc='Apakah anda yakin ingin menghapus data ini?'
             delFunc={deleteItem} 
             onClose={() => { setAskDelete(false), setDeleteId('') }} 
         />
-        <EditCategoryModal id={editCatId} 
+        <EditCategoryModal
             open={openEditModal} 
             onClose={() => setOpenEditModal(false)} 
         />

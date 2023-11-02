@@ -6,6 +6,7 @@ import LayoutMain from "@/components/admin/layouts/main";
 import Dashboard from "@/pages/admin/dashboard";
 import JobCategory from "@/pages/admin/job-categories"
 import Register from "@/pages/admin/register";
+import Payroll from "@/pages/admin/payroll"
 
 const Routing = () => {
     return (<>
@@ -18,6 +19,7 @@ const Routing = () => {
                 <Route element={<LayoutMain />}>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/job-categories" element={<JobCategory />} />
+                    <Route path="/payroll" element={<Payroll />} />
                 </Route>
             </Routes>
         </Router>
