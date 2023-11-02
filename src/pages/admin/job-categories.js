@@ -1,19 +1,13 @@
 import React, { useRef } from 'react'
 import styles from '@/styles/pages/admin/JobCategories.module.scss'
-import SVGAdd from '@/public/icons/add.svg'
+import SVGAdd from '@/assets/icons/add.svg'
 import CustomTable from '@/components/common/table'
 import LayoutMain from '@/components/admin/layouts/main'
 import IconBtn from '@/components/common/icon-button'
 import AddCategoryModal from '@/components/admin/modals/add-category'
-import { axiosInstance } from 'src/utils/axios'
-import { convertDate } from 'src/utils/convert-date'
-import { API_CATEGORY_LIST, API_DELETE_CAT } from 'src/utils/api'
+import { convertDate } from '../../utils/convert-date'
 import ConfirmDeleteModal from '@/components/common/confirm-delete'
-import CustomAlert from '@/components/common/alert'
-import { useDispatch, useSelector } from 'react-redux'
-import { alertMessage, openAlert, setMessage, setOpenAlert, severity } from 'src/redux/common/alertSlice'
 import EditCategoryModal from '@/components/admin/modals/edit-category'
-import { openModal, setOpenModal } from 'src/redux/common/modalSlice'
 
 const colList = [
     {
@@ -29,74 +23,24 @@ const colList = [
 ]
 
 export default function JobCategories() {
-    const dispatch = useDispatch()
-    const effectRan = useRef(false)
-
-    const isOpenAlert = useSelector(openAlert)
-    const alertSeverity = useSelector(severity)
-    const alertMsg = useSelector(alertMessage)
-    const isEditModal = useSelector(openModal)
-
     const [openCatModal, setOpenCatModal] = React.useState(false)
+    const [openEditModal, setOpenEditModal] = React.useState(false)
     const [askDelete, setAskDelete] = React.useState(false)
     const [deleteId, setDeleteId] = React.useState('')
     const [editCatId, setEditCatId] = React.useState('')
     const [categoryList, setCategoryList] = React.useState([])
 
-    const getCategoryList = () => {
-        axiosInstance.get(API_CATEGORY_LIST)
-        .then((res) => {
-            res.data.data.map((item) => {
-                if(!categoryList.find((item) => item.category_id)) {
-                    setCategoryList((categoryList) => [
-                        ...categoryList, {
-                            category_id: item.category_id,
-                            category_name: item.category_name,
-                            category_slug: item.category_slug,
-                            create_date: item.createdAt
-                        }
-                    ])
-                }
-            })
-        }).catch((err) => {})
-    }
-
-    React.useEffect(() => {
-        if (effectRan.current === false) {
-          getCategoryList()  
-
-          return () => {
-            effectRan.current === true
-          }
-        }
-    }, [])
-
     const deleteItem = () => {
-        if(deleteId !== '') {
-            axiosInstance.get(API_DELETE_CAT + deleteId)
-            .then((res) => {
-                setAskDelete(false)
-                setDeleteId('')
-                dispatch(setMessage(res.data.message))
-                dispatch(setOpenAlert(true))
-            }).catch((err) => {})
-        }
+        setAskDelete(false)
     }
 
-    const modalDelete = (id) => {
-        setDeleteId(id)
+    const modalDelete = () => {
         setAskDelete(true)
     }
 
-    const editItem = (id) => {
-        dispatch(setOpenModal(true))
-
-        if(id) {
-            setEditCatId(id)
-        }
+    const editItem = () => {
+        setOpenEditModal(false)
     }
-
-    console.log(editCatId)
     
     return(<>
         <h4><b>Kategori Pekerjaan</b></h4>
@@ -122,15 +66,9 @@ export default function JobCategories() {
             delFunc={deleteItem} 
             onClose={() => { setAskDelete(false), setDeleteId('') }} 
         />
-        <CustomAlert open={isOpenAlert} 
-            severity={alertSeverity}
-            text={alertMsg} 
-            duration={3500} 
-            onClose={() => { dispatch(setOpenAlert(false)), dispatch(setMessage('')) }} 
-        />
         <EditCategoryModal id={editCatId} 
-            open={isEditModal} 
-            onClose={() => { dispatch(setOpenModal(false)); setEditCatId('') }} 
+            open={openEditModal} 
+            onClose={() => setOpenEditModal(false)} 
         />
     </>)
 }

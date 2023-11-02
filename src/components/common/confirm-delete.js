@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from '@/styles/components/common/ConfirmDelete.module.scss'
 import cn from 'classnames'
 import { Dialog, DialogContent } from '@mui/material'

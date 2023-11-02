@@ -2,47 +2,14 @@ import styles from '@/styles/components/admin/modals/AddCategoryModal.module.scs
 import cn from 'classnames'
 import { Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
-import { useDispatch } from 'react-redux'
-import { axiosInstance } from 'src/utils/axios'
-import { useState } from 'react'
-import { API_ADD_CAT } from 'src/utils/api'
-import { setMessage, setOpenAlert, setSeverity } from 'src/redux/common/alertSlice'
+import React, { useState } from 'react'
 
 export default function AddCategoryModal({ open, onClose }) {
-    const dispatch = useDispatch()
-
     const [catName, setCatName] = useState('')
     
     const saveCategory = (e) => {
         e.preventDefault()
 
-        const data = {
-            category_name: catName
-        }
-
-        axiosInstance.post(API_ADD_CAT, data)
-        .then((res) => {
-            console.log(res)
-            onClose()
-
-            if(res.status === 200) {
-                dispatch(setOpenAlert(true))
-                dispatch(setMessage('Data berhasil ditambahkan'))
-                dispatch(setSeverity('success'))
-            }
-        }).catch((err) => {
-            console.log(err)
-
-            if(err) {
-                dispatch(setMessage(err.response.data.message))
-                dispatch(setSeverity('error'))
-                dispatch(setOpenAlert(true))
-            } else {
-                dispatch(setMessage('Data gagal ditambahkan. Silahkan ulangi kembali!'))
-                dispatch(setSeverity('error'))
-                dispatch(setOpenAlert(true))
-            }
-        })
     }
 
     return(<>

@@ -62,17 +62,17 @@ export default function Navbar() {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }} className={styles.menuWrap}>
           <List>
-            <NavLink to='/admin/dashboard' className={styles.NavLink}>
+            <NavLink to='/dashboard' className={styles.NavLink}>
                 <ListItemButton>
                     <ListItemText primary="Dashboard" />
                 </ListItemButton>
             </NavLink>
-            <NavLink to='/admin/job-categories' className={styles.NavLink}>
+            <NavLink to='/job-categories' className={styles.NavLink}>
                 <ListItemButton>
                     <ListItemText primary="Kategori Pekerjaan" />
                 </ListItemButton>
             </NavLink>
-            <NavLink to='/admin/payroll' className={styles.NavLink}>
+            <NavLink to='/payroll' className={styles.NavLink}>
                 <ListItemButton>
                     <ListItemText primary="Penghasilan" />
                 </ListItemButton>
@@ -83,19 +83,19 @@ export default function Navbar() {
             </ListItemButton>
             <Collapse in={openCompanyList} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <NavLink to='/admin/company/new-submission' className={styles.NavLink}>
+                <NavLink to='/company/new-submission' className={styles.NavLink}>
                   <ListItemButton sx={{ pl: 4 }}>
                     <ListItemText primary="Pengajuan Baru" />
                   </ListItemButton>
                 </NavLink>
-                <NavLink to='/admin/company/all' className={styles.NavLink}>
+                <NavLink to='/company/all' className={styles.NavLink}>
                   <ListItemButton sx={{ pl: 4 }}>
                     <ListItemText primary="Semua Perusahaan" />
                   </ListItemButton>
                 </NavLink>
               </List>
             </Collapse>
-            <NavLink to='/admin/employee/all' className={styles.NavLink}>
+            <NavLink to='/employee/all' className={styles.NavLink}>
                 <ListItemButton>
                     <ListItemText primary="Semua Pekerja" />
                 </ListItemButton>

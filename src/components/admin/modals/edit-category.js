@@ -1,17 +1,11 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { axiosInstance } from "src/utils/axios"
+import React, { useState } from "react"
 import styles from '@/styles/components/admin/modals/AddCategoryModal.module.scss'
 import CloseIcon from '@mui/icons-material/Close'
 import cn from 'classnames'
 import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material"
 
 export default function EditCategoryModal({ open, onClose, id }) {
-    const dispatch = useDispatch()
-
     const [catName, setCatName] = useState('')
-
-    console.log(id)
     
     const getDetailCategory = () => {
         // axiosInstance.

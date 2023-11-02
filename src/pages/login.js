@@ -8,7 +8,7 @@ import SVGEyeClose from '@/assets/icons/eye-closed.svg'
 import CustomAlert from "@/components/common/alert"
 
 export default function Login() {
-    const router = useNavigate()
+    const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = React.useState('')
     const [severity, setSeverity] = React.useState('success')
     const [openAlert, setOpenAlert] = React.useState(false)
@@ -31,6 +31,8 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        navigate('/admin/dashboard')
     }
 
     return(<>
@@ -67,7 +69,7 @@ export default function Login() {
                     </div>
                     <button type="submit" className={cn(styles.loginBtn, "btn btn-primary blue")}>Login</button>
                     <div className="mt-2">
-                        <p className={styles.registText}>Belum punya akun? <NavLink to="/register"><span>Daftar</span></NavLink></p>
+                        <p className={styles.registText}>Belum punya akun? <NavLink to="/admin/register"><span>Daftar</span></NavLink></p>
                     </div>
                 </div>
             </form>
