@@ -8,7 +8,7 @@ import CustomDropdown from '@/components/common/dropdown'
 import EditIcon from '@mui/icons-material/Edit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { useRouter } from 'next/router'
+import { useNavigate } from 'react-router-dom'
 
 const dummyData = [
     {
@@ -80,7 +80,7 @@ const statusData = [
 ]
 
 export default function AllCompany() {
-    const router = useRouter()
+    const navigate = useNavigate()
     const [status, setStatus] = React.useState('all')
 
     const handleStatus = (e) => {
@@ -89,7 +89,7 @@ export default function AllCompany() {
 
     const detailBtn = (id) => {
         console.log('Detail: ' + id)
-        router.push('/admin/company/detail-company')
+        navigate('/admin-detail-company')
     }
     
     const actionBtn = [

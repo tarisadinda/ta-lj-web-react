@@ -4,8 +4,8 @@ import CustomTable from "@/components/common/table"
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import CheckIcon from '@mui/icons-material/Check'
 import ClearIcon from '@mui/icons-material/Clear'
-import { useRouter } from "next/router"
 import TrueFalseModal from "@/components/common/true-false-modal"
+import { useNavigate } from 'react-router-dom'
 
 const colList = [
     {
@@ -41,17 +41,18 @@ const dummyData = [
 ]
 
 export default function NewSubmission() {
-    const router = useRouter()
+    const navigate = useNavigate()
 
     const [openModal, setOpenModal] = React.useState(false)
 
     const detailBtn = (id) => {
-        router.push('/admin/company/detail-verification')
+        navigate('/admin-detail-verification')
     }
 
     const acceptBtn = (id) => {
         setOpenModal(!openModal)
     }
+
     const actionBtn = [
         {
             icon: <VisibilityIcon />,

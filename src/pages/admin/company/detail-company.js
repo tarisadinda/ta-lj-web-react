@@ -1,14 +1,14 @@
+import React from 'react'
 import LayoutMain from "@/components/admin/layouts/main"
 import styles from '@/styles/pages/admin/company/DetailCompany.module.scss'
-import Image from "next/image"
 import cn from 'classnames'
-import Laptop from '@/public/laptop-work.png'
+import Laptop from '@/assets/laptop-work.png'
 import { CustomChip } from "@/components/common/chip"
-import Link from "next/link"
+import { NavLink } from 'react-router-dom'
 
 export default function DetailCompany() {
     return(<>
-        <Image src={Laptop} className={styles.logoCompany} width={150} height={150} alt="company-logo" />
+        <img src={Laptop} className={styles.logoCompany} width={150} height={150} alt="company-logo" />
         <div className="mt-2">
             <CustomChip label='Belum Terverifikasi' bgcolor='#F1C93A' />
         </div>
@@ -45,7 +45,7 @@ export default function DetailCompany() {
             </div>
             <div className="row">
                 <div className="col-3"><b>Website</b></div>
-                <div className="col-6"><Link href='#'>metanesia.co.id</Link></div>
+                <div className="col-6"><NavLink to='#'>metanesia.co.id</NavLink></div>
             </div>
         </div>
     </>)
